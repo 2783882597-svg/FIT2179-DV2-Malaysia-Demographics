@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Population by State in Malaysia (2024)",
+    "subtitle": "Total population by state and federal territory",
+    "anchor": "start"
+  },
+
+  "width": 560,
+  "height": 330,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/mptwaktusolat/jakim.geojson/master/malaysia.state.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "data/population_by_state_malaysia_2024.csv"
+        },
+        "key": "state_map_name",
+        "fields": [
+          "state",
+          "population_million",
+          "population_class",
+          "rank"
+        ]
+      }
+    }
+  ],
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.8
+  },
+
+  "encoding": {
+    "color": {
+      "field": "population_million",
+      "type": "quantitative",
+      "title": "Population (million)",
+      "scale": {
+        "scheme": "blues",
+        "domain": [0, 8]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "population_million",
+        "type": "quantitative",
+        "title": "Population (million)",
+        "format": ".2f"
+      },
+      {
+        "field": "rank",
+        "type": "quantitative",
+        "title": "Rank"
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "orient": "right",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Arial"
+  }
+}

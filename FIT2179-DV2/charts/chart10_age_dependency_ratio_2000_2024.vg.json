@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Age Dependency Ratio in Malaysia (2000-2024)",
+    "subtitle": "Dependents as a share of the working-age population",
+    "anchor": "start"
+  },
+
+  "width": 560,
+  "height": 260,
+
+  "data": {
+    "url": "data/age_dependency_ratio_malaysia_2000_2024.csv"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 3,
+        "color": "#9A5A6A"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "values": [2000, 2005, 2010, 2015, 2020, 2024]
+          }
+        },
+        "y": {
+          "field": "dependency_ratio",
+          "type": "quantitative",
+          "title": "Dependency ratio (%)",
+          "scale": {
+            "zero": false
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "dependency_ratio",
+            "type": "quantitative",
+            "title": "Dependency ratio (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2000 || datum.year == 2024"
+        },
+        {
+          "calculate": "format(datum.dependency_ratio, '.1f') + '%'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#9A5A6A"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "dependency_ratio",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Arial"
+  }
+}

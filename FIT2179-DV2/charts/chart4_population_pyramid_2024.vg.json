@@ -1,0 +1,222 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Population Pyramid of Malaysia (2024)",
+    "subtitle": "Population by age group and sex",
+    "anchor": "start"
+  },
+
+  "data": {
+    "url": "data/population_structure_pyramid_malaysia_2024.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.chart == 'pyramid'"
+    }
+  ],
+
+  "hconcat": [
+    {
+      "width": 170,
+      "height": 300,
+      "transform": [
+        {
+          "filter": "datum.sex == 'Male'"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "color": "#7EA6C8"
+      },
+      "encoding": {
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "title": null,
+          "sort": [
+            "85+",
+            "80-84",
+            "75-79",
+            "70-74",
+            "65-69",
+            "60-64",
+            "55-59",
+            "50-54",
+            "45-49",
+            "40-44",
+            "35-39",
+            "30-34",
+            "25-29",
+            "20-24",
+            "15-19",
+            "10-14",
+            "5-9",
+            "0-4"
+          ],
+          "axis": null
+        },
+        "x": {
+          "field": "population_million",
+          "type": "quantitative",
+          "title": "Male",
+          "sort": "descending",
+          "scale": {
+            "domain": [0, 2],
+            "reverse": true
+          },
+          "axis": {
+            "values": [0, 1, 2]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "sex",
+            "type": "nominal",
+            "title": "Sex"
+          },
+          {
+            "field": "age",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "population_million",
+            "type": "quantitative",
+            "title": "Population (million)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "width": 44,
+      "height": 300,
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#333"
+      },
+      "encoding": {
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "title": "Age",
+          "sort": [
+            "85+",
+            "80-84",
+            "75-79",
+            "70-74",
+            "65-69",
+            "60-64",
+            "55-59",
+            "50-54",
+            "45-49",
+            "40-44",
+            "35-39",
+            "30-34",
+            "25-29",
+            "20-24",
+            "15-19",
+            "10-14",
+            "5-9",
+            "0-4"
+          ],
+          "axis": null
+        },
+        "text": {
+          "field": "age",
+          "type": "ordinal"
+        }
+      }
+    },
+    {
+      "width": 170,
+      "height": 300,
+      "transform": [
+        {
+          "filter": "datum.sex == 'Female'"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "color": "#E5A3B3"
+      },
+      "encoding": {
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "title": null,
+          "sort": [
+            "85+",
+            "80-84",
+            "75-79",
+            "70-74",
+            "65-69",
+            "60-64",
+            "55-59",
+            "50-54",
+            "45-49",
+            "40-44",
+            "35-39",
+            "30-34",
+            "25-29",
+            "20-24",
+            "15-19",
+            "10-14",
+            "5-9",
+            "0-4"
+          ],
+          "axis": null
+        },
+        "x": {
+          "field": "population_million",
+          "type": "quantitative",
+          "title": "Female",
+          "scale": {
+            "domain": [0, 2]
+          },
+          "axis": {
+            "values": [0, 1, 2]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "sex",
+            "type": "nominal",
+            "title": "Sex"
+          },
+          {
+            "field": "age",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "population_million",
+            "type": "quantitative",
+            "title": "Population (million)",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+
+  "spacing": 4,
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Arial"
+  }
+}
