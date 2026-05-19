@@ -1,0 +1,126 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Male and Female Population Share in Malaysia (2000-2024)",
+    "subtitle": "Each point shows the share of total population by sex",
+    "anchor": "start"
+  },
+
+  "width": 560,
+  "height": 260,
+
+  "data": {
+    "url": "data/gender_share_malaysia_2000_2024.csv"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2,
+        "opacity": 0.45
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "values": [2000, 2005, 2010, 2015, 2020, 2024]
+          }
+        },
+        "y": {
+          "field": "percentage",
+          "type": "quantitative",
+          "title": "Share of population (%)",
+          "scale": {
+            "domain": [47, 53]
+          }
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Sex",
+          "scale": {
+            "domain": ["Male", "Female"],
+            "range": ["#2878B5", "#D7839F"]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 70,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "values": [2000, 2005, 2010, 2015, 2020, 2024]
+          }
+        },
+        "y": {
+          "field": "percentage",
+          "type": "quantitative",
+          "title": "Share of population (%)",
+          "scale": {
+            "domain": [47, 53]
+          }
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Sex",
+          "scale": {
+            "domain": ["Male", "Female"],
+            "range": ["#2878B5", "#D7839F"]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "sex",
+            "type": "nominal",
+            "title": "Sex"
+          },
+          {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "Share (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "orient": "top",
+      "title": null
+    },
+    "font": "Arial"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Top 5 Most Populated States in Malaysia (2024)",
+    "subtitle": "Total population by state",
+    "anchor": "start"
+  },
+
+  "width": 430,
+  "height": 240,
+
+  "data": {
+    "url": "data/population_by_state_malaysia_2024.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.rank <= 5"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#F2B95B",
+        "cornerRadiusTopRight": 3,
+        "cornerRadiusBottomRight": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "title": null,
+          "sort": {
+            "field": "population_million",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "population_million",
+          "type": "quantitative",
+          "title": "Population (million)",
+          "scale": {
+            "domain": [0, 8]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "population_million",
+            "type": "quantitative",
+            "title": "Population (million)",
+            "format": ".2f"
+          },
+          {
+            "field": "rank",
+            "type": "quantitative",
+            "title": "Rank"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#333"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {
+            "field": "population_million",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "population_million",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "population_million",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Arial"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Population by Age Group in Malaysia (2024)",
+    "subtitle": "Share of total population by broad age group",
+    "anchor": "start"
+  },
+
+  "width": 320,
+  "height": 240,
+
+  "data": {
+    "url": "data/population_structure_pyramid_malaysia_2024.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.chart == 'age_structure'"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#8DB6D9",
+        "cornerRadiusTopLeft": 3,
+        "cornerRadiusTopRight": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "title": "Age group",
+          "sort": ["0-14", "15-24", "25-54", "55-64", "65+"],
+          "axis": {
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "percentage",
+          "type": "quantitative",
+          "title": "Share of population (%)",
+          "scale": {
+            "domain": [0, 50]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "percentage",
+            "type": "quantitative",
+            "title": "Share (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "population_million",
+            "type": "quantitative",
+            "title": "Population (million)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#333"
+      },
+      "encoding": {
+        "x": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": ["0-14", "15-24", "25-54", "55-64", "65+"]
+        },
+        "y": {
+          "field": "percentage",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Arial"
+  }
+}

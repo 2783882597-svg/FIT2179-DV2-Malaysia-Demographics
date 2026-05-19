@@ -1,0 +1,17 @@
+rank,state,state_map_name,year,population_thousand,population_million,population_class
+1,Selangor,Selangor,2024,7362.7,7.363,>= 6 million
+2,Johor,Johor,2024,4184.4,4.184,3-6 million
+3,Sabah,Sabah,2024,3742.0,3.742,3-6 million
+4,Perak,Perak,2024,2569.4,2.569,1-3 million
+5,Sarawak,Sarawak,2024,2517.5,2.518,1-3 million
+6,Kedah,Kedah,2024,2217.1,2.217,1-3 million
+7,W.P. Kuala Lumpur,Kuala Lumpur,2024,2067.5,2.067,1-3 million
+8,Kelantan,Kelantan,2024,1887.9,1.888,1-3 million
+9,Pulau Pinang,Pulau Pinang,2024,1800.5,1.8,1-3 million
+10,Pahang,Pahang,2024,1667.7,1.668,1-3 million
+11,Negeri Sembilan,Negeri Sembilan,2024,1239.5,1.24,1-3 million
+12,Terengganu,Terengganu,2024,1231.5,1.232,1-3 million
+13,Melaka,Melaka,2024,1046.7,1.047,1-3 million
+14,Perlis,Perlis,2024,296.8,0.297,< 1 million
+15,W.P. Putrajaya,Putrajaya,2024,120.3,0.12,< 1 million
+16,W.P. Labuan,Labuan,2024,100.8,0.101,< 1 million

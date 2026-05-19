@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Life Expectancy in Malaysia (2000-2024)",
+    "subtitle": "Life expectancy at birth, total population",
+    "anchor": "start"
+  },
+
+  "width": 560,
+  "height": 260,
+
+  "data": {
+    "url": "data/life_expectancy_malaysia_2000_2024.csv"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 3,
+        "color": "#6E5AA8"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "values": [2000, 2005, 2010, 2015, 2020, 2024]
+          }
+        },
+        "y": {
+          "field": "life_expectancy",
+          "type": "quantitative",
+          "title": "Life expectancy (years)",
+          "scale": {
+            "zero": false
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "life_expectancy",
+            "type": "quantitative",
+            "title": "Life expectancy",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2021 || datum.year == 2024"
+        },
+        {
+          "calculate": "datum.year == 2021 ? '2021 dip: ' + format(datum.life_expectancy, '.1f') : '2024: ' + format(datum.life_expectancy, '.1f')",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#6E5AA8"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "life_expectancy",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "font": "Arial"
+  }
+}

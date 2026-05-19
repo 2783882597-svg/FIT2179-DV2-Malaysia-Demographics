@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Malaysia's Population Has Grown Steadily Since 2000",
+    "subtitle": "Total population, 2000-2024",
+    "anchor": "start"
+  },
+
+  "width": 420,
+  "height": 240,
+
+  "data": {
+    "url": "data/population_growth_malaysia.csv"
+  },
+
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3,
+    "color": "#2E7D32"
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": "Year",
+      "axis": {
+        "format": "d",
+        "values": [2000, 2005, 2010, 2015, 2020, 2024]
+      }
+    },
+    "y": {
+      "field": "population_million",
+      "type": "quantitative",
+      "title": "Population (million)",
+      "scale": {
+        "zero": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "quantitative",
+        "title": "Year",
+        "format": "d"
+      },
+      {
+        "field": "population_million",
+        "type": "quantitative",
+        "title": "Population (million)",
+        "format": ".2f"
+      }
+    ]
+  }
+}

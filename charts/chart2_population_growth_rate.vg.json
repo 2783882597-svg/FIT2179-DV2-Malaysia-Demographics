@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Malaysia's Population Growth Rate Is Slowing",
+    "subtitle": "Annual population growth rate, 2000-2024",
+    "anchor": "start"
+  },
+
+  "width": 420,
+  "height": 240,
+
+  "data": {
+    "url": "data/population_growth_rate_malaysia.csv"
+  },
+
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 3,
+    "color": "#2878B5"
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": "Year",
+      "axis": {
+        "format": "d",
+        "values": [2000, 2005, 2010, 2015, 2020, 2024]
+      }
+    },
+    "y": {
+      "field": "growth_rate",
+      "type": "quantitative",
+      "title": "Growth rate (%)",
+      "scale": {
+        "zero": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "quantitative",
+        "title": "Year",
+        "format": "d"
+      },
+      {
+        "field": "growth_rate",
+        "type": "quantitative",
+        "title": "Growth rate (%)",
+        "format": ".2f"
+      }
+    ]
+  }
+}

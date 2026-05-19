@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Urban and Rural Population Share in Malaysia (2000-2024)",
+    "subtitle": "Urban share has increased steadily over time",
+    "anchor": "start"
+  },
+
+  "width": 560,
+  "height": 260,
+
+  "data": {
+    "url": "data/urban_rural_share_malaysia_2000_2024.csv"
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": "Year",
+      "axis": {
+        "format": "d",
+        "values": [2000, 2005, 2010, 2015, 2020, 2024]
+      }
+    },
+
+    "y": {
+      "field": "percentage",
+      "type": "quantitative",
+      "title": "Share of population (%)",
+      "stack": "zero",
+      "scale": {
+        "domain": [0, 100]
+      },
+      "axis": {
+        "values": [0, 25, 50, 75, 100]
+      }
+    },
+    "color": {
+      "field": "area_type",
+      "type": "nominal",
+      "title": "Area type",
+      "scale": {
+        "domain": ["Urban", "Rural"],
+        "range": ["#F2CF63", "#8DBB8A"]
+      }
+    },
+    "order": {
+      "field": "area_type",
+      "sort": "descending"
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "area_type",
+        "type": "nominal",
+        "title": "Area type"
+      },
+      {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "Share (%)",
+        "format": ".2f"
+      }
+    ]
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.75,
+        "line": {
+          "color": "white",
+          "strokeWidth": 1
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 45,
+        "stroke": "white",
+        "strokeWidth": 1
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "gridColor": "#E6E2D8",
+      "labelFontSize": 10,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "orient": "top",
+      "title": null
+    },
+    "font": "Arial"
+  }
+}
